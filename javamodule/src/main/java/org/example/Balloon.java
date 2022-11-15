@@ -36,18 +36,8 @@ public class Balloon {
         while(checkNums(map)) {
             brojac++;
         }
-
         return brojac;
     }
-
-    private static void validateWord(String word) {
-        for(char ch : word.toCharArray()) {
-            if (Character.isDigit(ch)) {
-                throw new RuntimeException("Word must not have digits!");
-            }
-        }
-    }
-
     private static boolean checkNums(Map<Character, Integer> map) {
         for(Character key : map.keySet()) {
             if(map.get(key) < 1) {
@@ -57,6 +47,13 @@ public class Balloon {
             map.put(key, --num);
         }
         return true;
+    }
+    private static void validateWord(String word) {
+        for(char ch : word.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                throw new RuntimeException("Word must not have digits!");
+            }
+        }
     }
 
     static int balloon(String s) {
