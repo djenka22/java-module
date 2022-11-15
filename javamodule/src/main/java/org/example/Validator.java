@@ -1,7 +1,10 @@
 package org.example;
 
+import javax.swing.plaf.PanelUI;
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class Validator {
     private Map<Character, String> map;
@@ -9,10 +12,10 @@ public class Validator {
 
     public Validator(String forbiddenCharacters) {
         this.forbiddenCharacters = forbiddenCharacters;
-        this.map = fillMap(forbiddenCharacters);
+        this.map = fillMap();
     }
 
-    private Map fillMap(String forbiddenCharacters) {
+    private Map fillMap() {
         HashMap<Character, String> map = new HashMap<>();
         for (char ch : forbiddenCharacters.toCharArray()) {
             map.put(ch, null);
@@ -29,5 +32,8 @@ public class Validator {
                 throw new RuntimeException("Word must not have" + forbiddenCharacters + "characters!");
             }
         }
+    }
+    public void foo(){
+
     }
 }

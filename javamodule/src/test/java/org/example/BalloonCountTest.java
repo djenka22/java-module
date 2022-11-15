@@ -1,7 +1,13 @@
 package org.example;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 
 import java.util.HashMap;
@@ -11,21 +17,35 @@ import java.util.Map;
 import static org.example.constants.ForbiddenCharacters.FORBIDDEN_CHARACTERS;
 
 
+@ExtendWith(MockitoExtension.class)
 public class BalloonCountTest {
+    @Mock
+    private Validator validator;
+    private Balloon underTest;
+
+    @BeforeEach
+    void setUp() {
+        underTest = new Balloon(validator);
+
+    }
     @Test
     public void itShouldReturnMapOfLinesAndFrequenciesOfGivenWord() {
         // given
         String line = "BSKLLONOAUS";
         String word = "BALLOON";
         List<String> lines = List.of(line);
-        Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));
 
         // when
-        Map<String,Integer> underTest = balloon.count(lines, word);
+        Map<String,Integer> actual = underTest.count(lines, word);
 
         // then
         HashMap<String,Integer> expected = new HashMap<>();
         expected.put(line, 1);
-        Assertions.assertEquals(underTest, expected);
+        Assertions.assertEquals(actual, expected);
+    }
+    @Test
+    void canValidateWord() {
+        underTest.count(List.of("BSKLLONOAUS"), "BALLOON");
+        Mockito.verify(validator).validate("BALLOON");
     }
 }
