@@ -51,8 +51,10 @@ public class App {
             ILI MOZEMO DA UHVATIMO SVE
             catch (Exception e) {}
             ILI
-            catch (IOException e) u prvom bloku
-            catch (RuntimeException e) u drugom bloku
+            catch (IOException e)
+            catch (RuntimeException e)
+            ILI
+            catch (IOException | RuntimeException e)
         */
     }
 
