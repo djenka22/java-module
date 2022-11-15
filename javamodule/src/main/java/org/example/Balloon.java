@@ -1,59 +1,31 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @Slf4j
 public class Balloon {
-    static Map<String, Integer> count(List<String> lines, String word) {
+    private Validator validator;
+
+    public Balloon(@Nullable Validator validator) {
+        this.validator = validator;
+    }
+
+    public Map<String, Integer> count(List<String> lines, String word) {
+        if (validator != null) {
+            validator.validate(word);
+        }
         Map<String, Integer> map = new HashMap<>();
         for(String line : lines) {
-            map.put(line, frequency(word, line));
+            map.put(line, Frequency.findFrequency(word, line));
         }
         return map;
-    }
-    static int frequency(String word, String text) {
-        validateWord(word);
-        Map<Character, Integer> map = new HashMap<>();
-        for(char character : word.toCharArray()) {
-            map.put(character, 0);
-        }
-
-        int textLength = text.length();
-        int brojac = 0;
-        for(int i = 0; i < textLength; i++) {
-            if (map.containsKey(text.charAt(i))) {
-                log.info("map contains key {}", text.charAt(i));
-                int num = map.get(text.charAt(i));
-                map.put(text.charAt(i), ++num);
-            }
-        }
-
-        while(checkNums(map)) {
-            brojac++;
-        }
-        return brojac;
-    }
-    private static boolean checkNums(Map<Character, Integer> map) {
-        for(Character key : map.keySet()) {
-            if(map.get(key) < 1) {
-                return false;
-            }
-            int num = map.get(key);
-            map.put(key, --num);
-        }
-        return true;
-    }
-    private static void validateWord(String word) {
-        for(char ch : word.toCharArray()) {
-            if (Character.isDigit(ch)) {
-                throw new RuntimeException("Word must not have digits!");
-            }
-        }
     }
 
     static int balloon(String s) {

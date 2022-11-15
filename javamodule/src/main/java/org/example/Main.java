@@ -22,15 +22,6 @@ public class Main {
         File fileToWrite = new File(FILE_FOR_WRITE);
         App app = new App(WORD);
         app.execute(fileToRead, fileToWrite);
-        /*
-            ILI MOZEMO DA UHVATIMO SVE
-            catch (Exception e) {}
-            ILI
-            catch (IOException e)
-            catch (RuntimeException e)
-            ILI
-            catch (IOException | RuntimeException e)
-        */
     }
 
 
