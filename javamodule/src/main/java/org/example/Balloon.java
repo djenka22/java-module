@@ -9,10 +9,10 @@ import java.util.Map;
 
 @Slf4j
 public class Balloon {
-    static Map<String, String> count(List<String> lines, String word) {
-        Map<String, String> map = new HashMap<>();
+    static Map<String, Integer> count(List<String> lines, String word) {
+        Map<String, Integer> map = new HashMap<>();
         for(String line : lines) {
-            map.put(line, frequency(word, line) + "");
+            map.put(line, frequency(word, line));
         }
         return map;
     }

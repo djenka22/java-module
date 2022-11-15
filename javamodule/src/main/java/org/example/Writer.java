@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Slf4j
 public class Writer {
-    public static void write(FileWriter writer, Map<String, String> map) throws IOException {
+    public static void write(FileWriter writer, Map<String, Integer> map) throws IOException {
         for(String s : map.keySet()) {
             writer.write(s + ": " + map.get(s) + "\n");
             log.info("text to write: {}: {}", s, map.get(s));
