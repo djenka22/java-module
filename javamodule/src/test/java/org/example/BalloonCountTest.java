@@ -20,11 +20,11 @@ import static org.example.constants.ForbiddenCharacters.FORBIDDEN_CHARACTERS;
 @ExtendWith(MockitoExtension.class)
 public class BalloonCountTest {
     @Mock
-    private Validator validator;
-    private Balloon underTest;
+    public Validator validator;
+    public Balloon underTest;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         underTest = new Balloon(validator);
 
     }
@@ -44,7 +44,7 @@ public class BalloonCountTest {
         Assertions.assertEquals(actual, expected);
     }
     @Test
-    void canValidateWord() {
+    public void canValidateWord() {
         underTest.count(List.of("BSKLLONOAUS"), "BALLOON");
         Mockito.verify(validator).validate("BALLOON");
     }
