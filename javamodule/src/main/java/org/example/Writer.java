@@ -10,9 +10,9 @@ import java.util.Map;
 @Slf4j
 public class Writer {
     public static void write(FileWriter writer, Map<String, Integer> map) throws IOException {
-        for(String s : map.keySet()) {
-            writer.write(s + ": " + map.get(s) + "\n");
-            log.info("text to write: {}: {}", s, map.get(s));
+        for(Map.Entry<String, Integer> entry : map.entrySet()) {
+            writer.write(entry.getKey() + ": " + entry.getValue() + "\n");
+            log.info("text to write: {}: {}", entry.getKey(), entry.getValue());
         }
     }
 }

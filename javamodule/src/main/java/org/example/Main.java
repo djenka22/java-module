@@ -18,8 +18,8 @@ public class Main {
     static final String FILE_FOR_WRITE = "Result";
 
     public static void main( String[] args ) {
-        File fileToRead = new File(FILE_FOR_READ);
-        File fileToWrite = new File(FILE_FOR_WRITE);
+        var fileToRead = new File(FILE_FOR_READ);
+        var fileToWrite = new File(FILE_FOR_WRITE);
         App app = new App(WORD);
         app.execute(fileToRead, fileToWrite);
     }

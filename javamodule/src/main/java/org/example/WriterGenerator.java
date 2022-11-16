@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.errors.CustomError;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,7 +16,7 @@ public class WriterGenerator {
             return new FileWriter(file);
         }  catch (IOException e) {
             log.info(e.getMessage());
-            throw new RuntimeException(e);
+            throw new CustomError("error generating FileWriter");
         }
     }
 }

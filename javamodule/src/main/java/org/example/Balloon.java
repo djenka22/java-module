@@ -28,6 +28,7 @@ public class Balloon {
         return map;
     }
 
+    /*
     static int balloon(String s) {
 
         int duzina = s.length();
@@ -64,4 +65,6 @@ public class Balloon {
         }
         return brojac;
     }
+
+    */
 }

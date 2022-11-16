@@ -15,8 +15,8 @@ public class Frequency {
         }
 
         int textLength = line.length();
-        int brojac = 0;
-        for(int i = 0; i < textLength; i++) {
+        var brojac = 0;
+        for(var i = 0; i < textLength; i++) {
             if (map.containsKey(line.charAt(i))) {
                 int num = map.get(line.charAt(i));
                 map.put(line.charAt(i), ++num);
