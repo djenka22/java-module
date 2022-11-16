@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.errors.CustomError;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,6 @@ public class ValidatorTest {
         Validator validator = new Validator("123.");
 
         // then
-        Assertions.assertThrows(RuntimeException.class, () -> validator.validate(word));
+        Assertions.assertThrows(CustomError.class, () -> validator.validate(word));
     }
 }

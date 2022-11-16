@@ -23,7 +23,7 @@ public class AppTest {
         FileWriter fileWriter= null;
         try {
             fileWriter = new FileWriter(fileForRead);
-            fileWriter.write(line);
+          //  fileWriter.write(line);
         } catch (IOException e) {
             log.error("Error while testing App");
             log.error(e.getMessage());

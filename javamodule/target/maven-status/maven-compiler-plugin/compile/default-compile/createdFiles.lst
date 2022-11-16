@@ -6,5 +6,6 @@ org/example/App.class
 org/example/Reader.class
 org/example/ReaderGenerator.class
 org/example/constants/ForbiddenCharacters.class
+org/example/errors/CustomError.class
 org/example/Validator.class
 org/example/Writer.class

@@ -1,6 +1,5 @@
 package org.example;
 
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,12 +28,11 @@ public class Frequency {
         return brojac;
     }
     private static boolean checkNums(Map<Character, Integer> map) {
-        for(Character key : map.keySet()) {
-            if(map.get(key) < 1) {
+        for(Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if(entry.getValue() < 1) {
                 return false;
             }
-            int num = map.get(key);
-            map.put(key, --num);
+            entry.setValue(entry.getValue() - 1);
         }
         return true;
     }

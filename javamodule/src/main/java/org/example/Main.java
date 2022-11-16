@@ -3,9 +3,6 @@ package org.example;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Hello world!

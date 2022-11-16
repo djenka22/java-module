@@ -1,4 +1,5 @@
 org/example/AppTest.class
 org/example/FrequencyTest.class
+org/example/WriterTest.class
 org/example/BalloonCountTest.class
 org/example/ValidatorTest.class

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">javamodule</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Validator.java</span></div><h1>Validator.java</h1><pre class="source lang-java linenums">package org.example;
 
-import javax.swing.plaf.PanelUI;
+import org.example.errors.CustomError;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,31 +11,28 @@ public class Validator {
     private Map&lt;Character, String&gt; map;
     private String forbiddenCharacters;
 
-<span class="fc" id="L13">    public Validator(String forbiddenCharacters) {</span>
-<span class="fc" id="L14">        this.forbiddenCharacters = forbiddenCharacters;</span>
-<span class="fc" id="L15">        this.map = fillMap();</span>
-<span class="fc" id="L16">    }</span>
+<span class="fc" id="L14">    public Validator(String forbiddenCharacters) {</span>
+<span class="fc" id="L15">        this.forbiddenCharacters = forbiddenCharacters;</span>
+<span class="fc" id="L16">        this.map = fillMap();</span>
+<span class="fc" id="L17">    }</span>
 
-    private Map fillMap() {
-<span class="fc" id="L19">        HashMap&lt;Character, String&gt; map = new HashMap&lt;&gt;();</span>
-<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (char ch : forbiddenCharacters.toCharArray()) {</span>
-<span class="fc" id="L21">            map.put(ch, null);</span>
+    private Map&lt;Character, String&gt; fillMap() {
+<span class="fc" id="L20">        map = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for (char ch : forbiddenCharacters.toCharArray()) {</span>
+<span class="fc" id="L22">            map.put(ch, null);</span>
         }
-<span class="fc" id="L23">        return map;</span>
+<span class="fc" id="L24">        return map;</span>
     }
 
     public void validate(String word) {
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        for(char ch : word.toCharArray()) {</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">            if(Character.isDigit(ch)) {</span>
-<span class="fc" id="L29">                throw new RuntimeException(&quot;Word must not have digits!&quot;);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for(char ch : word.toCharArray()) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            if(Character.isDigit(ch)) {</span>
+<span class="fc" id="L30">                throw new CustomError(&quot;Word must not have digits!&quot;);</span>
             }
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">            if(map.containsKey(ch)) {</span>
-<span class="nc" id="L32">                throw new RuntimeException(&quot;Word must not have&quot; + forbiddenCharacters + &quot;characters!&quot;);</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">            if(map.containsKey(ch)) {</span>
+<span class="nc" id="L33">                throw new CustomError(&quot;Word must not have&quot; + forbiddenCharacters + &quot;characters!&quot;);</span>
             }
         }
-<span class="fc" id="L35">    }</span>
-    public void foo(){
-
-<span class="nc" id="L38">    }</span>
+<span class="fc" id="L36">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

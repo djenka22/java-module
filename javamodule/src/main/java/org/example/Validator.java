@@ -1,6 +1,7 @@
 package org.example;
 
-import javax.swing.plaf.PanelUI;
+import org.example.errors.CustomError;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +16,8 @@ public class Validator {
         this.map = fillMap();
     }
 
-    private Map fillMap() {
-        HashMap<Character, String> map = new HashMap<>();
+    private Map<Character, String> fillMap() {
+        map = new HashMap<>();
         for (char ch : forbiddenCharacters.toCharArray()) {
             map.put(ch, null);
         }
@@ -26,14 +27,11 @@ public class Validator {
     public void validate(String word) {
         for(char ch : word.toCharArray()) {
             if(Character.isDigit(ch)) {
-                throw new RuntimeException("Word must not have digits!");
+                throw new CustomError("Word must not have digits!");
             }
             if(map.containsKey(ch)) {
-                throw new RuntimeException("Word must not have" + forbiddenCharacters + "characters!");
+                throw new CustomError("Word must not have" + forbiddenCharacters + "characters!");
             }
         }
-    }
-    public void foo(){
-
     }
 }

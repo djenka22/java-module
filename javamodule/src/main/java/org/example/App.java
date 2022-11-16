@@ -21,7 +21,7 @@ public class App {
             FileWriter fileWriter = WriterGenerator.generate(fileToWrite);
             List<String> lines = Reader.read(fileReader);
             Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));
-            Map map = balloon.count(lines, WORD);
+            Map<String, Integer> map = balloon.count(lines, WORD);
             Writer.write(fileWriter, map);
             fileReader.close();
             fileWriter.close();

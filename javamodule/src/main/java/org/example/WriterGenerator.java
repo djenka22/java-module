@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.errors.CustomError;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 

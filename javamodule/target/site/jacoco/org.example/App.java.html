@@ -21,7 +21,7 @@ public class App {
 <span class="fc" id="L21">            FileWriter fileWriter = WriterGenerator.generate(fileToWrite);</span>
 <span class="fc" id="L22">            List&lt;String&gt; lines = Reader.read(fileReader);</span>
 <span class="fc" id="L23">            Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));</span>
-<span class="fc" id="L24">            Map map = balloon.count(lines, WORD);</span>
+<span class="fc" id="L24">            Map&lt;String, Integer&gt; map = balloon.count(lines, WORD);</span>
 <span class="fc" id="L25">            Writer.write(fileWriter, map);</span>
 <span class="fc" id="L26">            fileReader.close();</span>
 <span class="fc" id="L27">            fileWriter.close();</span>
