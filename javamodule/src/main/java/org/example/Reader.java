@@ -9,7 +9,7 @@ import java.util.List;
 
 @Slf4j
 public class Reader {
-    public static List<String> read(FileReader fileReader) throws IOException {
+    public List<String> read(FileReader fileReader) throws IOException {
         var bufferedReader = new BufferedReader(fileReader);
         String line;
         List<String> lines = new ArrayList<>();

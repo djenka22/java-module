@@ -5,12 +5,12 @@ import org.example.errors.CustomError;
 
 import java.io.*;
 
-<span class="fc" id="L8">@Slf4j</span>
+<span class="nc" id="L8">@Slf4j</span>
 <span class="nc" id="L9">public class ReaderGenerator {</span>
     public static FileReader generate(File file) {
 
         try {
-<span class="fc" id="L13">            return new FileReader(file);</span>
+<span class="nc" id="L13">            return new FileReader(file);</span>
 <span class="nc" id="L14">        }  catch (IOException e) {</span>
 <span class="nc" id="L15">            log.info(e.getMessage());</span>
 <span class="nc" id="L16">            throw new CustomError(&quot;error generating FileReader&quot;);</span>

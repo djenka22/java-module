@@ -7,12 +7,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-<span class="fc" id="L10">@Slf4j</span>
+<span class="nc" id="L10">@Slf4j</span>
 <span class="nc" id="L11">public class WriterGenerator {</span>
     public static FileWriter generate(File file) {
 
         try {
-<span class="fc" id="L15">            return new FileWriter(file);</span>
+<span class="nc" id="L15">            return new FileWriter(file);</span>
 <span class="nc" id="L16">        }  catch (IOException e) {</span>
 <span class="nc" id="L17">            log.info(e.getMessage());</span>
 <span class="nc" id="L18">            throw new CustomError(&quot;error generating FileWriter&quot;);</span>

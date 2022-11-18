@@ -4,9 +4,9 @@ javamodule,org.example.errors,CustomError,0,4,0,0,0,2,0,1,0,1
 javamodule,org.example,Writer,3,34,0,2,1,6,1,3,1,2
 javamodule,org.example,Main,27,0,0,0,7,0,3,0,3,0
 javamodule,org.example,Balloon,0,42,1,3,0,11,1,4,0,3
-javamodule,org.example,Reader,8,20,1,1,2,5,2,2,1,2
-javamodule,org.example,WriterGenerator,13,9,0,0,4,2,1,2,1,2
-javamodule,org.example,ReaderGenerator,13,9,0,0,4,2,1,2,1,2
-javamodule,org.example,Validator,7,75,1,7,1,13,1,6,0,3
-javamodule,org.example,App,5,42,0,0,2,14,0,3,0,3
+javamodule,org.example,Reader,28,0,2,0,7,0,4,0,3,0
+javamodule,org.example,WriterGenerator,22,0,0,0,6,0,3,0,3,0
+javamodule,org.example,ReaderGenerator,22,0,0,0,6,0,3,0,3,0
+javamodule,org.example,Validator,8,74,2,6,2,12,2,5,0,3
+javamodule,org.example,App,37,10,0,0,12,4,1,2,1,2
 javamodule,org.example,Frequency,3,105,0,12,1,18,1,8,1,2

@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.constants.ForbiddenCharacters;
 import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,8 @@ public class Balloon {
     private Validator validator;
 
     public Balloon(@Nullable Validator validator) {
-        this.validator = validator;
+        if(validator != null)
+            this.validator = validator;
     }
 
     public Map<String, Integer> count(List<String> lines, String word) {

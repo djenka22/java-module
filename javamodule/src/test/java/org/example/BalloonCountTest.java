@@ -1,29 +1,34 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+import lombok.extern.slf4j.Slf4j;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.example.constants.ForbiddenCharacters.FORBIDDEN_CHARACTERS;
+import static org.mockito.Mockito.mock;
 
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
+@PrepareForTest(Frequency.class)
+@RunWith(PowerMockRunner.class)
+@Slf4j
 public class BalloonCountTest {
-    @Mock
-    public Validator validator;
+    public Validator validator = mock(Validator.class);
     public Balloon underTest;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         underTest = new Balloon(validator);
 
@@ -35,13 +40,19 @@ public class BalloonCountTest {
         String word = "BALLOON";
         List<String> lines = List.of(line);
 
+        PowerMockito.mockStatic(Frequency.class);
+        Mockito.when(Frequency.findFrequency(word, line)).thenReturn(5);
+
         // when
-        Map<String,Integer> actual = underTest.count(lines, word);
+        Map<String, Integer> actual = underTest.count(lines, word);
 
         // then
-        HashMap<String,Integer> expected = new HashMap<>();
-        expected.put(line, 1);
-        Assertions.assertEquals(actual, expected);
+        PowerMockito.verifyStatic(Frequency.class);
+        Frequency.findFrequency(word, line);
+
+        HashMap<String,Integer> unExpected = new HashMap<>();
+        unExpected.put(line, 1);
+        Assert.assertNotEquals(unExpected, actual);
     }
     @Test
     public void canValidateWord() {

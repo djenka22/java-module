@@ -25,7 +25,7 @@ public class Validator {
     }
 
     public void validate(String word) {
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        for(char ch : word.toCharArray()) {</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        for(char ch : word.toCharArray()) {</span>
 <span class="fc bfc" id="L29" title="All 2 branches covered.">            if(Character.isDigit(ch)) {</span>
 <span class="fc" id="L30">                throw new CustomError(&quot;Word must not have digits!&quot;);</span>
             }
@@ -33,6 +33,6 @@ public class Validator {
 <span class="nc" id="L33">                throw new CustomError(&quot;Word must not have&quot; + forbiddenCharacters + &quot;characters!&quot;);</span>
             }
         }
-<span class="fc" id="L36">    }</span>
+<span class="nc" id="L36">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

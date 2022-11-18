@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-<span class="fc" id="L10">@Slf4j</span>
+<span class="nc" id="L10">@Slf4j</span>
 <span class="nc" id="L11">public class Reader {</span>
     public static List&lt;String&gt; read(FileReader fileReader) throws IOException {
-<span class="fc" id="L13">        var bufferedReader = new BufferedReader(fileReader);</span>
+<span class="nc" id="L13">        var bufferedReader = new BufferedReader(fileReader);</span>
         String line;
-<span class="fc" id="L15">        List&lt;String&gt; lines = new ArrayList&lt;&gt;();</span>
-<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        while ((line = bufferedReader.readLine()) != null) {</span>
+<span class="nc" id="L15">        List&lt;String&gt; lines = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        while ((line = bufferedReader.readLine()) != null) {</span>
 <span class="nc" id="L17">            lines.add(line);</span>
         }
-<span class="fc" id="L19">        return lines;</span>
+<span class="nc" id="L19">        return lines;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

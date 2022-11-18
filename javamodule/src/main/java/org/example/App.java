@@ -16,17 +16,19 @@ public class App {
     }
     public void execute(File fileToRead, File fileToWrite) {
 
-        try {
-            FileReader fileReader = ReaderGenerator.generate(fileToRead);
-            FileWriter fileWriter = WriterGenerator.generate(fileToWrite);
+        /*try {
+            FileReader fileReader = (FileReader) FileFactory.generate(fileToRead, FileReader.class);
+            FileWriter fileWriter = (FileWriter) FileFactory.generate(fileToWrite, FileWriter.class);
             List<String> lines = Reader.read(fileReader);
             Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));
             Map<String, Integer> map = balloon.count(lines, WORD);
             Writer.write(fileWriter, map);
             fileReader.close();
             fileWriter.close();
-        } catch (IOException | RuntimeException e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
     }
-}
+
+         */
+}}

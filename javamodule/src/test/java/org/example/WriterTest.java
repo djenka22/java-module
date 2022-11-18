@@ -1,11 +1,8 @@
 package org.example;
 
-import junit.framework.Assert;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+
 
 import java.io.*;
 import java.util.Map;
@@ -17,12 +14,12 @@ public class WriterTest {
     public final String FILE_NAME = "Writer-test";
     public File file;
 
-    @BeforeEach
+    @Before
     public void setUp() throws IOException {
         file = new File(FILE_NAME);
         file.createNewFile();
     }
-    @AfterEach
+    @After
     public void tearDown() {
         file.delete();
     }
@@ -36,7 +33,7 @@ public class WriterTest {
         BufferedReader bf = new BufferedReader(reader);
 
         // when
-        Writer.write(writer, map);
+        //Writer.write(writer, map);
         writer.close();
 
         //then
