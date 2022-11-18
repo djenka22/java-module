@@ -17,8 +17,6 @@ public class Main {
     public static void main( String[] args ) {
         var fileToRead = new File(FILE_FOR_READ);
         var fileToWrite = new File(FILE_FOR_WRITE);
-        App app = new App(WORD);
-        app.execute(fileToRead, fileToWrite);
     }
 
 

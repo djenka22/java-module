@@ -1,7 +1,8 @@
-package org.example;
+package org.example.execute;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.constants.ForbiddenCharacters;
+import org.example.contracts.IBalloon;
+import org.example.contracts.IValidator;
 import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.List;
@@ -9,14 +10,15 @@ import java.util.Map;
 
 
 @Slf4j
-public class Balloon {
-    private Validator validator;
+public class Balloon implements IBalloon {
+    private IValidator validator;
 
-    public Balloon(@Nullable Validator validator) {
+    public Balloon(@Nullable IValidator validator) {
         if(validator != null)
             this.validator = validator;
     }
 
+    @Override
     public Map<String, Integer> count(List<String> lines, String word) {
         if (validator != null) {
             validator.validate(word);
