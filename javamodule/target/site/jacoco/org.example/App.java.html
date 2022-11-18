@@ -8,26 +8,28 @@ import java.util.Map;
 
 import static org.example.constants.ForbiddenCharacters.FORBIDDEN_CHARACTERS;
 
-<span class="fc" id="L11">@Slf4j</span>
+<span class="nc" id="L11">@Slf4j</span>
 public class App {
     private final String WORD;
-<span class="fc" id="L14">    public App( String word) {</span>
-<span class="fc" id="L15">        WORD = word;</span>
-<span class="fc" id="L16">    }</span>
+<span class="nc" id="L14">    public App( String word) {</span>
+<span class="nc" id="L15">        WORD = word;</span>
+<span class="nc" id="L16">    }</span>
     public void execute(File fileToRead, File fileToWrite) {
 
-        try {
-<span class="nc" id="L20">            FileReader fileReader = ReaderGenerator.generate(fileToRead);</span>
-<span class="nc" id="L21">            FileWriter fileWriter = WriterGenerator.generate(fileToWrite);</span>
-<span class="nc" id="L22">            List&lt;String&gt; lines = Reader.read(fileReader);</span>
-<span class="nc" id="L23">            Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));</span>
-<span class="nc" id="L24">            Map&lt;String, Integer&gt; map = balloon.count(lines, WORD);</span>
-<span class="nc" id="L25">            Writer.write(fileWriter, map);</span>
-<span class="nc" id="L26">            fileReader.close();</span>
-<span class="nc" id="L27">            fileWriter.close();</span>
-<span class="nc" id="L28">        } catch (IOException | RuntimeException e) {</span>
-<span class="nc" id="L29">            log.info(e.getMessage());</span>
-<span class="nc" id="L30">        }</span>
-<span class="nc" id="L31">    }</span>
-}
+        /*try {
+            FileReader fileReader = (FileReader) FileFactory.generate(fileToRead, FileReader.class);
+            FileWriter fileWriter = (FileWriter) FileFactory.generate(fileToWrite, FileWriter.class);
+            List&lt;String&gt; lines = Reader.read(fileReader);
+            Balloon balloon = new Balloon(new Validator(FORBIDDEN_CHARACTERS));
+            Map&lt;String, Integer&gt; map = balloon.count(lines, WORD);
+            Writer.write(fileWriter, map);
+            fileReader.close();
+            fileWriter.close();
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+    }
+
+         */
+<span class="nc" id="L34">}}</span>
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

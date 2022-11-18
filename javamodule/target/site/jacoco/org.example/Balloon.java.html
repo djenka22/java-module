@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Balloon.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">javamodule</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Balloon.java</span></div><h1>Balloon.java</h1><pre class="source lang-java linenums">package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.constants.ForbiddenCharacters;
+import org.example.contracts.IBalloon;
+import org.example.contracts.IValidator;
 import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-<span class="fc" id="L10">@Slf4j</span>
-public class Balloon {
-    private Validator validator;
+<span class="fc" id="L13">@Slf4j</span>
+public class Balloon implements IBalloon {
+    private IValidator validator;
 
-<span class="fc" id="L14">    public Balloon(@Nullable Validator validator) {</span>
-<span class="fc" id="L15">        this.validator = validator;</span>
-<span class="fc" id="L16">    }</span>
+<span class="fc" id="L17">    public Balloon(@Nullable IValidator validator) {</span>
+<span class="pc bpc" id="L18" title="1 of 2 branches missed.">        if(validator != null)</span>
+<span class="fc" id="L19">            this.validator = validator;</span>
+<span class="fc" id="L20">    }</span>
 
+    @Override
     public Map&lt;String, Integer&gt; count(List&lt;String&gt; lines, String word) {
-<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        if (validator != null) {</span>
-<span class="fc" id="L20">            validator.validate(word);</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (validator != null) {</span>
+<span class="fc" id="L25">            validator.validate(word);</span>
         }
-<span class="fc" id="L22">        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        for(String line : lines) {</span>
-<span class="fc" id="L24">            map.put(line, Frequency.findFrequency(word, line));</span>
-<span class="fc" id="L25">        }</span>
-<span class="fc" id="L26">        return map;</span>
+<span class="fc" id="L27">        Map&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for(String line : lines) {</span>
+<span class="fc" id="L29">            map.put(line, Frequency.findFrequency(word, line));</span>
+<span class="fc" id="L30">        }</span>
+<span class="fc" id="L31">        return map;</span>
     }
 
     /*

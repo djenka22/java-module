@@ -2,9 +2,11 @@ package org.example;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.junit.Assert;
+import org.example.contracts.IValidator;
+import org.example.execute.Balloon;
+import org.example.execute.Frequency;
+import org.example.execute.Validator;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,50 +15,45 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import static org.mockito.Mockito.mock;
 
 
-//@ExtendWith(MockitoExtension.class)
 @PrepareForTest(Frequency.class)
 @RunWith(PowerMockRunner.class)
 @Slf4j
 public class BalloonCountTest {
-    public Validator validator = mock(Validator.class);
+    public IValidator validator;
     public Balloon underTest;
 
     @Before
     public void setUp() {
+        validator = mock(Validator.class);
         underTest = new Balloon(validator);
-
     }
     @Test
-    public void itShouldReturnMapOfLinesAndFrequenciesOfGivenWord() {
+    public void canFindFrequencyWhenCountIsCalled() {
         // given
         String line = "BSKLLONOAUS";
         String word = "BALLOON";
         List<String> lines = List.of(line);
 
         PowerMockito.mockStatic(Frequency.class);
-        Mockito.when(Frequency.findFrequency(word, line)).thenReturn(5);
+        //Mockito.when(Frequency.findFrequency(word, line)).thenReturn(5);
 
         // when
-        Map<String, Integer> actual = underTest.count(lines, word);
+        underTest.count(lines, word);
 
         // then
         PowerMockito.verifyStatic(Frequency.class);
         Frequency.findFrequency(word, line);
 
-        HashMap<String,Integer> unExpected = new HashMap<>();
-        unExpected.put(line, 1);
-        Assert.assertNotEquals(unExpected, actual);
     }
     @Test
     public void canValidateWord() {
+        // when
         underTest.count(List.of("BSKLLONOAUS"), "BALLOON");
+        // then
         Mockito.verify(validator).validate("BALLOON");
     }
 }

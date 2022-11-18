@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: org.example.ValidatorTest
+Test set: org.example.ReaderTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in org.example.ValidatorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.963 s - in org.example.ReaderTest

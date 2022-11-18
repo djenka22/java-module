@@ -1,45 +1,49 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.contracts.IWriter;
+import org.example.execute.Writer;
 import org.junit.*;
+import org.mockito.Mockito;
 
 
 import java.io.*;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
 public class WriterTest {
-    public final String KEY = "BAOOLLNNOLOLGBAXBALLOONKSKSKSBALLOONAHJAHUAFDASIOFBALLOONJASFIJBOKSDFAFJKDJLIDFLJDFNODFHDOJFDSIJEQFNBALLOON";
-    public final Integer VALUE = 7;
-    public final String FILE_NAME = "Writer-test";
-    public File file;
+    public FileReader fileReader;
+    public FileWriter fileWriter;
 
     @Before
     public void setUp() throws IOException {
-        file = new File(FILE_NAME);
-        file.createNewFile();
-    }
-    @After
-    public void tearDown() {
-        file.delete();
+        fileReader = Mockito.mock(FileReader.class);
+        fileWriter = Mockito.mock(FileWriter.class);
     }
     @Test
-    public void itShouldWriteCorrectText() throws IOException {
+    public void itShouldCallFileWriterWriteAndSendCorrectParameter() throws IOException {
         // given
-        Map<String, Integer> map = Map.of(KEY, VALUE);
-
-        FileReader reader = new FileReader(file);
-        FileWriter writer = new FileWriter(file);
-        BufferedReader bf = new BufferedReader(reader);
+        IWriter writer = new org.example.execute.Writer();
+        Map<String, Integer> input = Map.of("test", 0);
 
         // when
-        //Writer.write(writer, map);
-        writer.close();
+        writer.write(fileWriter, input);
 
-        //then
-        String actual = bf.readLine();
-        reader.close();
-        String expected = KEY + ": " + VALUE;
-        Assert.assertEquals(expected, actual);
+        // then
+        Mockito.verify(fileWriter).write("test: 0\n");
+    }
+    @Test
+    public void itShouldCallFileWriterWriteAndSendCorrectParameterList() throws IOException {
+        // given
+        org.example.execute.Writer writer = new Writer();
+        List<String> input = List.of("test1", "test2");
+
+        // when
+        writer.write(fileWriter, input);
+
+        // then
+        Mockito.verify(fileWriter).write("test1");
+        Mockito.verify(fileWriter).write("test2");
     }
 }
