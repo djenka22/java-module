@@ -1,8 +1,11 @@
 package org.example.web;
+
 import org.example.contracts.IService;
 import org.example.service.Service;
 
-import javax.servlet.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +17,8 @@ import java.util.List;
 import static org.example.constants.Files.FILE_FOR_RESULT_INPUT;
 import static org.example.constants.Files.FILE_FOR_TEXT_INPUT;
 
-@WebServlet("/api/provide")
+@WebServlet("/")
+@WebFilter
 public class FileController extends HttpServlet {
     private static FileController instance;
     private final IService service;
@@ -37,11 +41,12 @@ public class FileController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        service.writeLinesToFile(fileForInput, List.of(req.getParameter("lines")));
+        service.writeLinesToFile(fileForInput, List.of(req.getParameter("")));
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().write("hello");
         service.readLinesFromFile(fileForOutput);
     }
 }

@@ -30,6 +30,8 @@ public class BalloonCountTest {
     public void setUp() {
         validator = mock(Validator.class);
         underTest = new Balloon(validator);
+        log.info("mocking {}", validator.getClass());
+        log.info("instancing {}", underTest.getClass());
     }
     @Test
     public void canFindFrequencyWhenCountIsCalled() {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/api/execute")
+//@WebServlet("/api/execute")
 
 public class ExecuteController extends HttpServlet {
     private static ExecuteController instance;

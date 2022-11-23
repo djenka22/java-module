@@ -11,6 +11,8 @@ public class ValidatorTest {
     public void itShouldThrowARuntimeException() {
         // given
         String word = "test123.";
+
+        // when
         Validator validator = new Validator("123.");
 
         // then

@@ -13,18 +13,16 @@ import java.util.Map;
 
 @Slf4j
 public class WriterTest {
-    public FileReader fileReader;
     public FileWriter fileWriter;
 
     @Before
     public void setUp() throws IOException {
-        fileReader = Mockito.mock(FileReader.class);
         fileWriter = Mockito.mock(FileWriter.class);
     }
     @Test
     public void itShouldCallFileWriterWriteAndSendCorrectParameter() throws IOException {
         // given
-        IWriter writer = new org.example.execute.Writer();
+        IWriter writer = new Writer();
         Map<String, Integer> input = Map.of("test", 0);
 
         // when
