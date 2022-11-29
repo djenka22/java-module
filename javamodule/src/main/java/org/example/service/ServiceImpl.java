@@ -1,27 +1,25 @@
 package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.contracts.IRepository;
+import org.example.contracts.Callback;
+import org.example.contracts.Repository;
 import org.example.execute.Balloon;
-import org.example.repository.Repository;
-import org.example.contracts.IService;
+import org.example.repository.RepositoryImpl;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class Service implements IService {
-    private static Service instance;
-    private final IRepository repository;
-    private Service() {
-        this.repository = Repository.getInstance();
+public class ServiceImpl implements org.example.contracts.Service {
+    private static ServiceImpl instance;
+    private final Repository repository;
+    private ServiceImpl() {
+        this.repository = RepositoryImpl.getInstance();
     }
-    public static Service getInstance() {
+    public static ServiceImpl getInstance() {
         if(instance == null) {
-            instance = new Service();
+            instance = new ServiceImpl();
         }
         return instance;
     }
@@ -55,6 +53,9 @@ public class Service implements IService {
             log.error(e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
+    }
+    public void readLines(File file, Callback callback) {
+        repository.returnLines(file, callback);
     }
 
 

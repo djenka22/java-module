@@ -1,27 +1,20 @@
 package org.example.web;
-import org.example.contracts.IService;
-import org.example.service.Service;
+import org.example.callback.CallbackReadImpl;
+import org.example.contracts.Service;
+import org.example.service.ServiceImpl;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 import static org.example.constants.Files.FILE_FOR_RESULT_INPUT;
 import static org.example.constants.Files.FILE_FOR_TEXT_INPUT;
 
-@WebServlet("/api/provide")
-public class FileController extends HttpServlet {
+public class FileController {
     private static FileController instance;
-    private final IService service;
+    private final Service service;
     private final File fileForInput;
     private final File fileForOutput;
     private FileController() {
-        this.service = Service.getInstance();
+        this.service = ServiceImpl.getInstance();
         this.fileForInput = new File(FILE_FOR_TEXT_INPUT);
         this.fileForOutput = new File(FILE_FOR_RESULT_INPUT);
 
@@ -35,13 +28,20 @@ public class FileController extends HttpServlet {
     }
 
 
-    @Override
+   /* @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         service.writeLinesToFile(fileForInput, List.of(req.getParameter("lines")));
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        service.readLinesFromFile(fileForOutput);
+        //service.readLinesFromFile(fileForOutput);
+        resp.getWriter().println("hello");
+    }
+
+    */
+
+    public void myDoGet() {
+        service.readLines(fileForOutput, new CallbackReadImpl());
     }
 }

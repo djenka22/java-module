@@ -1,7 +1,7 @@
 package org.example.web;
 
-import org.example.contracts.IService;
-import org.example.service.Service;
+import org.example.contracts.Service;
+import org.example.service.ServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,9 +15,9 @@ import java.io.IOException;
 
 public class ExecuteController extends HttpServlet {
     private static ExecuteController instance;
-    private final IService service;
+    private final Service service;
     private ExecuteController() {
-        this.service = Service.getInstance();
+        this.service = ServiceImpl.getInstance();
     }
     public static ExecuteController getInstance() {
         if(instance == null) {
